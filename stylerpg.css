@@ -1,0 +1,140 @@
+.Background{
+  height : 450px;
+  width: 700px;
+  border: 2px solid rebeccapurple;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: space-evenly;
+}
+
+.MonstersPlacement{
+  height :  250px ;
+  width : 650px;
+  border: 2px solid black;
+  display :  flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  justify-content: space-evenly;
+}
+
+.CaractéristiquesGroupe {
+  height :  150px ;
+  width : 650px;
+  border: 2px solid black;
+  display :  flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  justify-content: space-evenly;
+}
+
+.Monstre1{
+  height : 250px;
+  width : 170px;
+  display: flex;
+  background-color: #F5F5DC;
+  flex-direction: column;
+  align-content: center;
+}
+.Monstre2{
+  height : 250px;
+  width : 170px;
+  display: flex;
+  background-color: #F5F5DC;
+  flex-direction: column;
+  align-content: center;
+}
+.Monstre3{
+  height : 250px;
+  width : 170px;
+  display: flex;
+  background-color: #F5F5DC;
+  flex-direction: column;
+  align-content: center;
+}
+
+.Bulle1{
+  height : 40px;
+  width : 170px;
+  display: flex;
+  background-color: #D2691E;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.Bulle2{
+  height : 40px;
+  width : 170px;
+  display: flex;
+  background-color: #D2691E;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.Bulle3{
+  height : 40px;
+  width : 170px;
+  display: flex;
+  background-color: #D2691E;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.Actions{
+  margin-top: 10px;
+  height : 126px;
+  width : 150px;
+  border: 2px solid red;
+  display : flex;
+  flex-direction: column;
+}
+.Texte{
+  margin-top: -1px;
+  height : 10px;
+}
+.Champions{
+  margin-top: 10px;
+  height : 126px;
+  width : 400px;
+  border: 2px solid red;
+  display : flex;
+}
+
+.Héros{
+  width : 100px;
+  display: flex;
+  flex-direction: column;
+}
+
+.Prêtre{
+  width : 100px;
+  display: flex;
+  flex-direction: column;
+}
+
+.Mage{
+  width : 100px;
+  display: flex;
+  flex-direction: column;
+}
+
+.ArtisteMartial{
+  width : 100px;
+  display: flex;
+  flex-direction: column;
+}
+
+.Name{
+  margin-top: -5px;
+  height : 5px;
+}
+.PV{
+  height : 5px;
+}
+.Mana{
+  height: 5px;
+}
