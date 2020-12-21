@@ -1,18 +1,20 @@
 .Background{
   height : 450px;
   width: 700px;
-  border: 2px solid rebeccapurple;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   align-content: center;
   justify-content: space-evenly;
+  background-image:url(Background.png);
+  background-repeat: no-repeat;
+  background-position : center center;
+  background-size : contain ;
 }
 
 .MonstersPlacement{
   height :  250px ;
   width : 650px;
-  border: 2px solid black;
   display :  flex;
   flex-wrap: wrap;
   align-content: space-between;
@@ -22,7 +24,6 @@
 .CaractéristiquesGroupe {
   height :  150px ;
   width : 650px;
-  border: 2px solid black;
   display :  flex;
   flex-wrap: wrap;
   align-content: space-between;
@@ -33,25 +34,34 @@
   height : 250px;
   width : 170px;
   display: flex;
-  background-color: #F5F5DC;
   flex-direction: column;
   align-content: center;
+  background-image :url(Monstre.png);
+  background-repeat: no-repeat;
+  background-position : center center;
+  background-size : contain ;
 }
 .Monstre2{
   height : 250px;
   width : 170px;
   display: flex;
-  background-color: #F5F5DC;
   flex-direction: column;
   align-content: center;
+  background-image :url(Monstre.png);
+  background-repeat: no-repeat;
+  background-position : center center;
+  background-size : contain ;
 }
 .Monstre3{
   height : 250px;
   width : 170px;
   display: flex;
-  background-color: #F5F5DC;
   flex-direction: column;
   align-content: center;
+  background-image :url(Monstre.png);
+  background-repeat: no-repeat;
+  background-position : center center;
+  background-size : contain ;
 }
 
 .Bulle1{
