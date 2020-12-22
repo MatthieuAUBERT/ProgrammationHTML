@@ -1,16 +1,16 @@
 // Variables Joueurs en version "object"
-var serena =    {name:"Séréna", class:"Healer", health:80, mana:40, attack:5, defense:4};
-var theo =      {name:"Théo", class:"Mage", health:90, mana:50, attack:5, defense:6};
-var eleven =    {name:"Eleven", class:"Hero", health:100, mana:20, attack:15, defense:8};
-var jade =      {name:"Jade", class:"Martial", health:120, mana:10, attack:20, defense:6};
+var eleven =    {name:"Eleven", health:150, mana:75, attack:15, defense:8 , lastAction:null};
+var serena =    {name:"Séréna", health:100, mana:150, attack:5, defense:4, lastAction:null};
+var theo =      {name:"Théo",   health:100, mana:120, attack:5, defense:6, lastAction:null};
+var jade =      {name:"Jade",   health:120, mana:60, attack:20, defense:6, lastAction:null};
 
-var monster0 =   {element:null, class:"Monster", health:100, attack:15};
-var monster1 =   {element:null, class:"Monster", health:100, attack:15};
-var monster2 =   {element:null, class:"Monster", health:100, attack:15};
+var monster0 =   {element:null, class:"Monster", health:100, attack:10};
+var monster1 =   {element:null, class:"Monster", health:100, attack:10};
+var monster2 =   {element:null, class:"Monster", health:100, attack:10};
 
 // Autres variables
 var stage = 0;
-var round = 0;
+var tour = 0;
 var dialogue = document.getElementById('Dialogue');
 
 var monstersElements = document.getElementsByClassName("Monstre");
@@ -24,7 +24,8 @@ for (var i = 0; i < monstersElements.length; i++)
   monstersElements[i].addEventListener('click', changeDefClick);
   monstersElements[i].addEventListener('mouseout', changeDefOut);
 }
-var characters = [serena, theo, eleven, jade];
+var target = monsters[0];
+var characters = [eleven, serena, theo, jade];
 
 // InfoBulles
 function changeDefOver(e) {
@@ -40,8 +41,6 @@ function changeDefOut(e) {
 }
 
 //Sélection Target
-var target = monsters[0];
-
 function changeDefClick(e) {
   if (e.target.id == "Monstre") {
     for (var i = 0; i < monstersElements.length; i++)
@@ -54,13 +53,21 @@ function changeDefClick(e) {
   }
 }
 
+//Fonction de victoire
 function win() {
   dialogue.innerHTML = "Vous avez gagné!";
+  alert("Vous avez gagné!");
 }
 
+// Changement de personnage dans l'ordre
 function nextStage() {
-  stage = (stage + 1) % 4;
-  if (target.health <= 0) {
+  stage++; // stage    0 : Eleven ;     1 : Serena ;     2 : Théo ;     3 : Jade
+  if (stage == 4) {
+    stage = 0;
+    tour++;
+    console.log("Début du tour n°" + (tour + 1));
+  }
+    if (target.health <= 0) {
     console.log("Le monstre est mort !");
     var found = false;
     for (var i = 0; i < monsters.length; i++)
@@ -72,42 +79,64 @@ function nextStage() {
       }
     }
     if (!found) {
+      updateUI();
       win();
     }
   }
   updateUI();
 }
 
-//Fonction d'attaque (Uniquement un joueur)
+//Fonction d'attaque 
 function attack() {
-  target.health -= 10;
+  target.health -= characters[stage].attack;
   console.log(target.health);
+  characters[stage].lastAction = "attack";
   nextStage();
 }
 
-//Fonction de défense (Uniquement un joueur)
+//Fonction de défense 
 function defend() {
-  target.health -= 10;
-  console.log(target.health);
-  nextStage();
+  characters[stage].lastAction = "defend";
 }
 
-//Fonction Spéciale (Basique)
+//Fonction Spéciale 
 function special() {
-  target.health -= 10;
-  console.log(target.health);
+  if (stage == 0) {
+	target.health -= characters[stage].attack * 2;
+	characters[stage].mana -= 15;
+  } else if (stage == 1) {
+	var injured = characters[0]; 
+	for (var i=0;i < characters.length; i++){
+		if (characters[i].health < injured.health){
+			injured = characters[i];
+		}
+	}
+	injured.health += 20;
+	characters[stage].mana -= 25;
+  } else if (stage == 2) {
+    for (var i = 0; i < monsters.length; i++)
+    {
+      monsters[i].health -= 15;
+    }
+    characters[stage].mana -= 20;
+  } else if (stage == 3) {
+	for (var i=0; i < 4; i++){
+		monsters[Math.floor((Math.random() * 100)) % monsters.length].health -= Math.floor(characters[stage].attack * 0.5) ;
+	}
+	characters[stage].mana -= 10;
+  }
+  characters[stage].lastAction = "special";
   nextStage();
 }
 
-
+//Affichage
 function updateUI() {
   dialogue.innerHTML = "Au tour de " + characters[stage].name;
   console.log("Au tour de " + characters[stage].name);
-  console.log(monstersElements.length);
   for (var i = 0; i < monstersElements.length; i++)
   {
     if (monsters[i].health > 0) {
-      monstersElements[i].children[0].children[0].innerHTML = "Monstre " + i + " : " + monsters[i].health + " HP";
+      monstersElements[i].children[0].children[0].innerHTML = "Monstre " + (i + 1) + " : " + monsters[i].health + " HP";
       if (target == monsters[i]) {
         monstersElements[i].style.opacity = "100%";
       }
@@ -118,6 +147,17 @@ function updateUI() {
       monstersElements[i].style.visibility = "hidden";
     }
   }
-}
+  for (var i = 0; i < characters.length; i++)
+  {
+    document.getElementById("HP" + i).innerHTML = characters[i].health + " HP";
+    document.getElementById("MP" + i).innerHTML = characters[i].mana  + " MP";
+    if (i == stage) {
+      document.getElementById("PL" + i).style.background = "#6e2e3e";
+    }
+    else {
+      document.getElementById("PL" + i).style.background = "black";
+    }
+  }
+
 
 updateUI();

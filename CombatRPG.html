@@ -5,68 +5,64 @@
     <title>CombatRPG</title>
 </head>
 <body>
-<!-- Start your code here -->
   <div class="Background">
     <div class="MonstersPlacement">
       <div id="Monstre" class="Monstre">
         <div class="Bulle">
           <p class="HPM1" id="HPM1"> Monstre A : 100 Hp</p>
         </div>
-        <div class="Mstr1" id="Mstr1">
-        </div>
       </div>
       <div id="Monstre" class="Monstre">
         <div class="Bulle">
           <p class="HPM2" id="HPM2"> Monstre B : 100 Hp</p>
-        </div>
-        <div class="Mstr2" id="Mstr2">
         </div>
       </div>
       <div id="Monstre" class="Monstre">
         <div class="Bulle">
           <p class="HPM3" id="HPM3"> Monstre C : 100 Hp</p>
         </div>
-        <div class="Mstr3" id="Mstr3">
-        </div>
       </div>
     </div>
-    <div class="CaractéristiquesGroupe">
+
+    <div style="text-align: center; margin-top: 20%;">
       <div class="Actions">
-        <p class="Texte" id="Dialogue">Que doit faire Eleven?</p>
-        <input onclick="attack()" type="button" id="Attaque" value="Attaque"/>
-        <input onclick="Def(1)" type="button" id="Défense" value="Défense"/>
-        <input onclick="Spe(1)" type="button" id="Spécial" value="Spécial"/>
+        <p id="Dialogue">Début de la partie</p>
+        <input onclick="attack()" type="button" value="Attaque"/>
+        <input onclick="defense()" type="button" value="Défense"/>
+        <input onclick="special()" type="button" value="Spécial"/>
       </div>
-      <div class="Champions">
-        <div class="Héros">
-          <p class="Name"> Eleven </p>
-          <p class="PV" id="PV1"> 100 Hp</p>
-          <p class="Mana" id="Mana1"> 20 Mp</p>
-          <p> Coupe Claire </p>
-        </div>
-        <div class="Prêtre">
-          <p class="Name"> Séréna </p>
-          <p class="PV" id="PV2"> 80 Hp</p>
-          <p class="Mana" id="Mana2"> 40 Mp</p>
-          <p> Soin </p>
-        </div>
-        <div class="Mage">
-          <p class="Name"> Théo </p>
-          <p class="PV" id="PV3"> 90 Hp</p>
-          <p class="Mana" id="Mana3"> 50 Mp</p>
-          <p> Méga-Flamme</p>
-        </div>
-        <div class="ArtisteMartial">
-          <p class="Name"> Jade </p>
-          <p class="PV" id="PV4"> 120 Hp</p>
-          <p class="Mana" id="Mana4"> 10 Mp</p>
-          <p> Multi-Coup </p>
-        </div>
+
+      <div class="Stats">
+      <table>
+       <tr>
+         <th id="PL0">Eleven</th>
+         <th id="PL1">Séréna</th>
+         <th id="PL2">Théo</th>
+         <th id="PL3">Jade</th>
+       </tr>
+       <tr>
+         <td id="HP0">HP</td>
+         <td id="HP1">HP</td>
+         <td id="HP2">HP</td>
+         <td id="HP3">HP</td>
+       </tr>
+       <tr>
+         <td id="MP0">MP</td>
+         <td id="MP1">MP</td>
+         <td id="MP2">MP</td>
+         <td id="MP3">MP</td>
+       </tr>
+       <tr>
+         <td>Coupe Claire</td>
+         <td>Soin</td>
+         <td>Méga-Flamme</td>
+         <td>Multi-coup</td>
+       </tr>
+      </table>
       </div>
     </div>
   </div>
 <script type="text/javascript" src="javarpg.js"></script>
 
-<!-- End your code here -->
 </body>
 </html>
