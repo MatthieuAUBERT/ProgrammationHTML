@@ -46,7 +46,7 @@ const TabJoueur = [1,2,3,4]
 var randomCible = 0
 
 
-//Info-Bulles
+//Info-Bulles fonctionnent !!!! Un miracle
 document.getElementById("Monstre1").onmouseover = function() {
   document.getElementById("Bulle1").style.visibility= "visible" ;
 }
@@ -151,15 +151,15 @@ function Def(Perso){
 	}
 	else if (Perso == 1){
 		Dialogue.innerHTML = "Séréna se défend";
-		ArmorJ1 = 5;
+		ArmorJ2 = 5;
 	}
 	else if (Perso == 2){
 		Dialogue.innerHTML = "Théo se défend";
-		ArmorJ1 = 6;
+		ArmorJ3 = 6;
 	}
 	else if (Perso == 3){
 		Dialogue.innerHTML = "Jade se défend";
-		ArmorJ1 = 6;
+		ArmorJ4 = 6;
 	}
 }
 
