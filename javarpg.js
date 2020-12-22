@@ -59,14 +59,44 @@ function win() {
   alert("Vous avez gagné!");
 }
 
+//Fonction de défaite
+function lose() {
+  dialogue.innerHTML = "Vous avez perdu!";
+  alert("Vous avez perdu!");
+}
+
+//Fonction Fin de tour
+function nextRound(){
+	var charactersAlive = false;
+	for (var i=0; i<characters.length; i++){
+		if (characters[i].health > 0){
+			charactersAlive = true; 
+		}
+	}
+	if (!charactersAlive){
+		lose();
+	}
+	nextStage();
+}
+
 // Changement de personnage dans l'ordre
 function nextStage() {
-  stage++; // stage    0 : Eleven ;     1 : Serena ;     2 : Théo ;     3 : Jade
+  stage++;  // stage    0 : Eleven ;     1 : Serena ;     2 : Théo ;     3 : Jade
+  while (stage < 4){
+	  if (characters[stage].health > 0){
+		  break;
+	  }
+	  else {
+		  stage++;
+	  }
+  }
   if (stage == 4) {
-    stage = 0;
+    stage = -1;
     tour++;
     console.log("Début du tour n°" + (tour + 1));
+	nextRound();
   }
+  
   if (stage == 0 && characters[stage].mana < 15){
 	  document.getElementById("special").disabled = true;
   }
