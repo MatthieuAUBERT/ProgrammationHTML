@@ -12,31 +12,26 @@ var HPM2 = 100 ;
 var HPM3 = 100 ;
 var AttaqueM = 15 ;
 
+
+//Joueurs 
+var serena = {class:"Healer", health:80, mana:40, attack:5};
+var theo =   {class:"Mage", health:90, mana:50, attack:5};
+var eleven = {class:"Hero", health:100, mana:20, attack:15};
+var jade =   {class:"Martial", health:120, mana:10, attack:20};
+
+var monster =   {class:"Monster", health:100, attack:15};
+
 //Variables Vie des joueurs
-var VieJ1 = 100 ;
 var VieJ1bis = document.getElementById('PV1');
-var VieJ2 = 80 ;
 var VieJ2bis = document.getElementById('PV2');
-var VieJ3 = 90 ;
 var VieJ3bis = document.getElementById('PV3');
-var VieJ4 = 120 ;
 var VieJ4bis = document.getElementById('PV4');
 
 //Variables Mana des joueurs
-var Mana1 = 20;
 var ManaJ1 = document.getElementById('Mana1');
-var Mana2 = 40;
 var ManaJ2 = document.getElementById('Mana2');
-var Mana3 = 50;
 var ManaJ3 = document.getElementById('Mana3');
-var Mana4 = 10;
 var ManaJ4 = document.getElementById('Mana4');
-
-//Variables Attaque des joueurs
-var AttaqueJ1 = 15 ;
-var AttaqueJ2 = 5 ;
-var AttaqueJ3 = 5 ;
-var AttaqueJ4 = 20 ;
 
 //Autres variables utiles au bon déroulement du jeu
 var Cible = 0;

@@ -1,28 +1,29 @@
 <html>
 <head>
     <link type="text/css" rel="stylesheet" href="stylerpg.css" />
-	<title>CombatRPG</title>
+    <meta charset="UTF-8">
+    <title>CombatRPG</title>
 </head>
 <body>
 <!-- Start your code here -->
   <div class="Background">
     <div class="MonstersPlacement">
-      <div id="Monstre1">
-        <div id="Bulle1">
+      <div id="Monstre" class="Monstre">
+        <div class="Bulle">
           <p class="HPM1" id="HPM1"> Monstre A : 100 Hp</p>
         </div>
         <div class="Mstr1" id="Mstr1">
         </div>
       </div>
-      <div id="Monstre2">
-        <div id="Bulle2">
+      <div id="Monstre" class="Monstre">
+        <div class="Bulle">
           <p class="HPM2" id="HPM2"> Monstre B : 100 Hp</p>
         </div>
         <div class="Mstr2" id="Mstr2">
         </div>
       </div>
-      <div id="Monstre3">
-        <div id="Bulle3">
+      <div id="Monstre" class="Monstre">
+        <div class="Bulle">
           <p class="HPM3" id="HPM3"> Monstre C : 100 Hp</p>
         </div>
         <div class="Mstr3" id="Mstr3">
@@ -32,9 +33,9 @@
     <div class="CaractéristiquesGroupe">
       <div class="Actions">
         <p class="Texte" id="Dialogue">Que doit faire Eleven?</p>
-        <input type="button" id="Attaque" value="Attaque"/>
-        <input type="button" id="Défense" value="Défense"/>
-        <input type="button" id="Spécial" value="Spécial"/>
+        <input onclick="attack()" type="button" id="Attaque" value="Attaque"/>
+        <input onclick="Def(1)" type="button" id="Défense" value="Défense"/>
+        <input onclick="Spe(1)" type="button" id="Spécial" value="Spécial"/>
       </div>
       <div class="Champions">
         <div class="Héros">
@@ -61,7 +62,7 @@
           <p class="Mana" id="Mana4"> 10 Mp</p>
           <p> Multi-Coup </p>
         </div>
-      </div>      
+      </div>
     </div>
   </div>
 <script type="text/javascript" src="javarpg.js"></script>
