@@ -73,19 +73,19 @@ document.getElementById("Monstre3").onmouseout = function() {
 
 //Prise de la cible via click
 document.getElementById("Monstre1").onclick = function() {
-	if HPM1 > 0 {
+	if (HPM1 > 0) {
 		Cible = 1;
 	}
 }
 
 document.getElementById("Monstre2").onclick = function() {
-	if HPM2 > 0 {
+	if (HPM2 > 0) {
 		Cible = 2;
 	}
 }
 
 document.getElementById("Monstre3").onclick = function() {
-	if HPM3 > 0 {
+	if (HPM3 > 0) {
 		Cible = 3;
 	}
 }
@@ -227,14 +227,14 @@ var ArmorJ1 = 2;
 var ArmorJ2 = 0;
 var ArmorJ3 = 1;
 var ArmorJ4 = 1;
-  for i in range (0,4){
-    if Attaque.onclick {
+  for (let i=0; i<4 ; i++){
+    if (Attaque.onclick) {
       Att(i);
     }
-    else if Defense.onclick{
+    else if (Defense.onclick){
       Def(i);
     }
-    else if Special.onclick{
+    else if (Special.onclick){
       Spe(i);
     }
 	if (i==1){
