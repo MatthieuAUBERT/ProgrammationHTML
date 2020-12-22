@@ -1,70 +1,59 @@
-//Variables pour les boutons
-var Attaque = document.getElementById('Attaque');
-var Defense = document.getElementById('Défense');
-var Special = document.getElementById('Spécial');
+// Variables Joueurs en version "object"
+var serena =    {name:"Séréna", class:"Healer", health:80, mana:40, attack:5, defense:4};
+var theo =      {name:"Théo", class:"Mage", health:90, mana:50, attack:5, defense:6};
+var eleven =    {name:"Eleven", class:"Hero", health:100, mana:20, attack:15, defense:8};
+var jade =      {name:"Jade", class:"Martial", health:120, mana:10, attack:20, defense:6};
 
-//Variables Caractéristiques des monstres
-var VieM1 = document.getElementById('HPM1');
-var VieM2 = document.getElementById('HPM2');
-var VieM3 = document.getElementById('HPM3');
-var HPM1 = 100 ;
-var HPM2 = 100 ;
-var HPM3 = 100 ;
-var AttaqueM = 15 ;
+var monster0 =   {element:null, class:"Monster", health:100, attack:15};
+var monster1 =   {element:null, class:"Monster", health:100, attack:15};
+var monster2 =   {element:null, class:"Monster", health:100, attack:15};
 
+// Autres variables
+var stage = 0;
+var round = 0;
+var dialogue = document.getElementById('Dialogue');
 
-//Joueurs 
-var serena = {class:"Healer", health:80, mana:40, attack:5};
-var theo =   {class:"Mage", health:90, mana:50, attack:5};
-var eleven = {class:"Hero", health:100, mana:20, attack:15};
-var jade =   {class:"Martial", health:120, mana:10, attack:20};
+var monstersElements = document.getElementsByClassName("Monstre");
 
-var monster =   {class:"Monster", health:100, attack:15};
+// Mise en place du combat et des monstres
+var monsters = [monster0, monster1, monster2];
+for (var i = 0; i < monstersElements.length; i++)
+{
+  monsters[i].element = monstersElements[i];
+  monstersElements[i].addEventListener('mouseover', changeDefOver);
+  monstersElements[i].addEventListener('click', changeDefClick);
+  monstersElements[i].addEventListener('mouseout', changeDefOut);
+}
+var characters = [serena, theo, eleven, jade];
 
-//Variables Vie des joueurs
-var VieJ1bis = document.getElementById('PV1');
-var VieJ2bis = document.getElementById('PV2');
-var VieJ3bis = document.getElementById('PV3');
-var VieJ4bis = document.getElementById('PV4');
-
-//Variables Mana des joueurs
-var ManaJ1 = document.getElementById('Mana1');
-var ManaJ2 = document.getElementById('Mana2');
-var ManaJ3 = document.getElementById('Mana3');
-var ManaJ4 = document.getElementById('Mana4');
-
-//Autres variables utiles au bon déroulement du jeu
-var Cible = 0;
-var tour = 0;
-var Dialogue = document.getElementById('Dialogue');
-const TabJoueur = [1,2,3,4]
-var randomCible = 0
-
-
-//Info-Bulles fonctionnent !!!! Un miracle
-document.getElementById("Monstre1").onmouseover = function() {
-  document.getElementById("Bulle1").style.visibility= "visible" ;
+// InfoBulles
+function changeDefOver(e) {
+  if (e.target.id == "Monstre") {
+    e.target.children[0].style.visibility = "visible";
+  }
 }
 
-document.getElementById("Monstre1").onmouseout = function() {
-  document.getElementById("Bulle1").style.visibility = "hidden" ;
+function changeDefOut(e) {
+  if (e.target.id == "Monstre") {
+    e.target.children[0].style.visibility = "hidden";
+  }
 }
 
-document.getElementById("Monstre2").onmouseover = function() {
-  document.getElementById("Bulle2").style.visibility= "visible" ;
+//Sélection Target
+var target = monsters[0];
+
+function changeDefClick(e) {
+  if (e.target.id == "Monstre") {
+    for (var i = 0; i < monstersElements.length; i++)
+    {
+      if (monstersElements[i] == e.target) {
+        target = monsters[i];
+      }
+    }
+    updateUI();
+  }
 }
 
-document.getElementById("Monstre2").onmouseout = function() {
-  document.getElementById("Bulle2").style.visibility = "hidden" ;
-}
-
-document.getElementById("Monstre3").onmouseover = function() {
-  document.getElementById("Bulle3").style.visibility= "visible" ;
-}
-
-document.getElementById("Monstre3").onmouseout = function() {
-  document.getElementById("Bulle3").style.visibility = "hidden" ;
-}
 
 //Prise de la cible via click
 document.getElementById("Monstre1").onclick = function() {
