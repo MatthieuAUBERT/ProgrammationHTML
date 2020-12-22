@@ -30,7 +30,7 @@
   justify-content: space-evenly;
 }
 
-.Monstre1{
+#Monstre1{
   height : 250px;
   width : 170px;
   display: flex;
@@ -41,7 +41,7 @@
   background-position : center center;
   background-size : contain ;
 }
-.Monstre2{
+#Monstre2{
   height : 250px;
   width : 170px;
   display: flex;
@@ -52,7 +52,7 @@
   background-position : center center;
   background-size : contain ;
 }
-.Monstre3{
+#Monstre3{
   height : 250px;
   width : 170px;
   display: flex;
@@ -64,7 +64,7 @@
   background-size : contain ;
 }
 
-.Bulle1{
+#Bulle1{
   height : 40px;
   width : 170px;
   display: flex;
@@ -72,9 +72,10 @@
   display: flex;
   align-content: center;
   justify-content: center;
+  visibility: hidden;
 }
 
-.Bulle2{
+#Bulle2{
   height : 40px;
   width : 170px;
   display: flex;
@@ -82,9 +83,10 @@
   display: flex;
   align-content: center;
   justify-content: center;
+  visibility: hidden;
 }
 
-.Bulle3{
+#Bulle3{
   height : 40px;
   width : 170px;
   display: flex;
@@ -92,15 +94,17 @@
   display: flex;
   align-content: center;
   justify-content: center;
+  visibility: hidden;
 }
 
 .Actions{
   margin-top: 10px;
   height : 126px;
   width : 150px;
-  border: 2px solid red;
+  border: 2px solid black;
   display : flex;
   flex-direction: column;
+  background-color : white;
 }
 .Texte{
   margin-top: -1px;
@@ -110,8 +114,9 @@
   margin-top: 10px;
   height : 126px;
   width : 400px;
-  border: 2px solid red;
+  border: 2px solid black;
   display : flex;
+  background-color: white;
 }
 
 .Héros{
