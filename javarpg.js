@@ -54,155 +54,51 @@ function changeDefClick(e) {
   }
 }
 
-
-//Prise de la cible via click
-document.getElementById("Monstre1").onclick = function() {
-	if (HPM1 > 0) {
-		Cible = 1;
-	}
+function win() {
+  dialogue.innerHTML = "Vous avez gagné!";
 }
 
-document.getElementById("Monstre2").onclick = function() {
-	if (HPM2 > 0) {
-		Cible = 2;
-	}
-}
-
-document.getElementById("Monstre3").onclick = function() {
-	if (HPM3 > 0) {
-		Cible = 3;
-	}
-}
-
-//Fonction Attaque permettant à l'appui du bouton d'initier l'attaque avec le personnage actif
-function Att(Perso) {
-	if (Perso == 0) {
-		Dialogue.innerHTML = "Eleven attaque !";
-		if (Cible == 1){
-			HPM1 -= AttaqueJ1;
-		}
-		 else if (Cible == 2){
-			HPM2 -= AttaqueJ1;
-		}
-		else if (Cible == 3){
-			HPM3 -= AttaqueJ1;
-		}
-	}
-	else if (Perso == 1) {
-		Dialogue.innerHTML = "Séréna attaque !";
-		if (Cible == 1){
-			HPM1 -= AttaqueJ2;
-		}
-		 else if (Cible == 2){
-			HPM2 -= AttaqueJ2;
-		}
-		else if (Cible == 3){
-			HPM3 -= AttaqueJ2;
-		}
-	}
-	else if (Perso == 2) {
-		Dialogue.innerHTML = "Théo attaque !";
-		if (Cible == 1){
-			HPM1 -= AttaqueJ3;
-		}
-		 else if (Cible == 2){
-			HPM2 -= AttaqueJ3;
-		}
-		else if (Cible == 3){
-			HPM3 -= AttaqueJ3;
-		}
-	}
-	else if (Perso == 3) {
-		Dialogue.innerHTML = "Jade attaque !";
-		if (Cible == 1){
-			HPM1 -= AttaqueJ4;
-		}
-		 else if (Cible == 2){
-			HPM2 -= AttaqueJ4;
-		}
-		else if (Cible == 3){
-			HPM3 -= AttaqueJ4;
-		}
-	}
-}
-
-
-//Fonction Défense permettant à l'appui de positionner le personnage en position défensive
-function Def(Perso){
-	if (Perso == 0){
-		Dialogue.innerHTML = "Eleven se défend";
-		ArmorJ1 = 8;
-	}
-	else if (Perso == 1){
-		Dialogue.innerHTML = "Séréna se défend";
-		ArmorJ2 = 5;
-	}
-	else if (Perso == 2){
-		Dialogue.innerHTML = "Théo se défend";
-		ArmorJ3 = 6;
-	}
-	else if (Perso == 3){
-		Dialogue.innerHTML = "Jade se défend";
-		ArmorJ4 = 6;
-	}
-}
-
-// Fonction Spéciale permettant d'utiliser la capacité spéciale du personnage actif
-function Spe(Perso){
-  if (Perso == 0 && Mana1 != 0) {
-	Dialogue.innerHTML = "COUPE CLAIRE !"
-	if (Cible == 1){
-		HPM1 -= AttaqueJ1 * 2;
-	}
-	else if (Cible == 2){
-		HPM2 -= AttaqueJ1 * 2;
-	}
-	else if (Cible == 3){
-		HPM3 -= AttaqueJ1 * 2;
-	}
-	Mana1 -= 5
+function nextStage() {
+  stage = (stage + 1) % 4;
+  if (target.health <= 0) {
+    console.log("Le monstre est mort !");
+    var found = false;
+    for (var i = 0; i < monsters.length; i++)
+    {
+      if (monsters[i].health > 0) {
+        target = monsters[i];
+        found = true;
+        break;
+      }
+    }
+    if (!found) {
+      win();
+    }
   }
-  else if (Perso == 1 && Mana2 != 0){
-	Dialogue.innerHTML = "SOIN !"
-	VieJ1 += 15;
-	VieJ2 += 15;
-	VieJ3 += 15;
-	VieJ4 += 15;
-	if (VieJ1 > 100){
-		VieJ1 = 100;
-	}
-	else if (VieJ2 > 80){
-		VieJ2 = 80;
-	}
-	else if (VieJ3 > 90){
-		VieJ3 = 90;
-	}
-	else if (VieJ4 > 120){
-		VieJ4 = 120;
-	}
-	Mana2 -= 10;
+  updateUI();
 }
-  else if (Perso == 2 && Mana3 != 0){
-	   Dialogue.innerHTML = "MEGA-FLAMME ! ";
-	   HPM1 -= 10;
-	   HPM2 -= 10;
-	   HPM3 -= 10;
-	   Mana3 -= 25
-   }
-  else if (Perso == 3 && Mana4 != 0){
-	   Dialogue.innerHTML = "MULTI-COUP !"
-	   if (Cible == 1){
-		HPM1 -= AttaqueJ4 + (AttaqueJ4/2) + (AttaqueJ4/4) ;
-		}
-		else if (Cible == 2){
-		HPM2 -= AttaqueJ4 + (AttaqueJ4/2) + (AttaqueJ4/4)  ;
-		}
-		else if (Cible == 3){
-		HPM3 -= AttaqueJ4 + (AttaqueJ4/2) + (AttaqueJ4/4);
-		}
-	Mana4 -= 5
-   }
+
+//Fonction d'attaque (Uniquement un joueur)
+function attack() {
+  target.health -= 10;
+  console.log(target.health);
+  nextStage();
 }
+
+//Fonction de défense (Uniquement un joueur)
+function defend() {
+  target.health -= 10;
+  console.log(target.health);
+  nextStage();
+}
+
+//Fonction Spéciale (Basique)
+function special() {
+  target.health -= 10;
+  console.log(target.health);
+  nextStage();
+}
+
 // Boucle du combat
 while ((VieJ1 != 0 && VieJ2 != 0 && VieJ3 != 0 && VieJ4 !=0) || (VieM1 != 0 && VieM2 != 0 && VieM3 != 0)) {
 	//Actions Joueurs
