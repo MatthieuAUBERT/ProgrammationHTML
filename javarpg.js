@@ -67,6 +67,21 @@ function nextStage() {
     tour++;
     console.log("Début du tour n°" + (tour + 1));
   }
+  if (stage == 0 && characters[stage].mana < 15){
+	  document.getElementById("special").disabled = true;
+  }
+  else if (stage == 1 && characters[stage].mana < 25){
+	  document.getElementById("special").disabled = true;
+  }
+  else if (stage == 2 && characters[stage].mana < 20){
+	  document.getElementById("special").disabled = true;
+  }
+  else if(stage == 3 && characters[stage].mana < 10){
+	  document.getElementById("special").disabled = true;
+  }
+  else {
+	  document.getElementById("special").disabled = false;
+  }
     if (target.health <= 0) {
     console.log("Le monstre est mort !");
     var found = false;
@@ -107,7 +122,7 @@ function special() {
   } else if (stage == 1) {
 	var injured = characters[0]; 
 	for (var i=0;i < characters.length; i++){
-		if (characters[i].health < injured.health){
+		if (characters[i].health < injured.health && characters[i].health > 0){
 			injured = characters[i];
 		}
 	}
@@ -158,6 +173,6 @@ function updateUI() {
       document.getElementById("PL" + i).style.background = "black";
     }
   }
-
+}
 
 updateUI();
