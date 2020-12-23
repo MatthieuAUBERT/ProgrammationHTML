@@ -4,9 +4,9 @@ var serena =    {name:"Séréna", health:100, mana:150, attack:5, defense:4, las
 var theo =      {name:"Théo",   health:100, mana:120, attack:5, defense:6, lastAction:null};
 var jade =      {name:"Jade",   health:120, mana:60, attack:20, defense:6, lastAction:null};
 
-var monster0 =   {element:null, class:"Monster", health:100, attack:10};
-var monster1 =   {element:null, class:"Monster", health:100, attack:10};
-var monster2 =   {element:null, class:"Monster", health:100, attack:10};
+var monster0 =   {element:null, class:"Monster", health:100, attack:20};
+var monster1 =   {element:null, class:"Monster", health:100, attack:20};
+var monster2 =   {element:null, class:"Monster", health:100, attack:20};
 
 // Autres variables
 var stage = 0;
@@ -76,6 +76,7 @@ function nextRound(){
 	if (!charactersAlive){
 		lose();
 	}
+	monsterStage()
 	nextStage();
 }
 
@@ -174,6 +175,20 @@ function special() {
   nextStage();
 }
 
+//Attaque des monstres
+function monsterStage() {
+  for (var i = 0; i < monsters.length; i++) {
+    if (monsters[i].health > 0) {
+      var aliveCharacters = [];
+      for (var j = 0; j < characters.length; j++) {
+        if (characters[j].health > 0) {
+          aliveCharacters.push(characters[j]);
+        }
+      }
+      aliveCharacters[Math.floor(Math.random() * aliveCharacters.length)].health -= monsters[i].attack;
+    }
+  }
+}
 //Affichage
 function updateUI() {
   dialogue.innerHTML = "Au tour de " + characters[stage].name;
